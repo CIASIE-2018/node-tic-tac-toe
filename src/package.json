@@ -1,0 +1,13 @@
+{
+  "name": "node-project",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "node index.js",
+    "test": "jest"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "jest": "^23.6.0",
+    "uuid": "^3.3.2"
+  }
+}

@@ -1,0 +1,23 @@
+version: "3"
+
+services:
+  webserver:
+    image: node:9.11.1-alpine
+    command: "yarn run start"
+    working_dir: "/app"
+    volumes:
+        - ./src:/app
+        - ./logs/node:/var/log/
+    ports:
+        - 3000:3000
+    depends_on:
+        - postgres
+    environment:
+      DATABASE_URL: postgres://todoapp@postgres/todos
+  postgres:
+      image: postgres:10
+      ports:
+          - "5432:5432"
+      volumes:
+          - ${PG_DATA_DIR-./data/pg}:/var/lib/postgresql/data
+          - ${PG_LOG_DIR-./logs/pg}:/var/log
